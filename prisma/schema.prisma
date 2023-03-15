@@ -1,0 +1,22 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+// following this guide: https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases/using-prisma-migrate-typescript-cockroachdb
+// Example: https://github.com/prisma/prisma-examples/blob/latest/databases/cockroachdb/prisma/schema.prisma
+
+model Trip {
+  id          String   @id @default(uuid())
+  start       DateTime
+  end         DateTime
+  origin      String
+  destination String
+}
